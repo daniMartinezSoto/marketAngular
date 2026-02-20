@@ -1,0 +1,31 @@
+@mixin breakpoint($breakpoint) {
+    @media (min-width: $breakpoint) {
+        @content;
+    }
+}
+
+
+// ================================
+// Mixin: breakpoint
+//
+// Uso: Permite envolver reglas CSS dentro de una media query de forma reutilizable.
+//
+// Sintaxis:
+// @include breakpoint(<valor>){
+//   /* reglas CSS que quieres aplicar a partir del breakpoint */
+// }
+//
+// Ejemplo:
+// .header {
+//   background-color: red;
+//
+//   @include breakpoint(768px) {
+//     background-color: blue;
+//   }
+// }
+//
+// Explicación:
+// - $breakpoint: parámetro que define el ancho mínimo de la media query
+// - @content: el bloque de CSS que se insertará dentro de la media query
+// - Similar a una función con parámetro, pero genera CSS directamente
+// ================================

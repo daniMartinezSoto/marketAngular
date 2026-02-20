@@ -1,0 +1,24 @@
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: var(--spacing-16); 
+
+  background-color: var(--color-low-grey);
+  z-index: var(--zindex-header);
+  position: sticky;
+  top: 0;
+}
+
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-12);
+}
+
+.header__icon {
+  width: 150px;   /* logo ancho */
+  height: 70px;   /* logo alto */
+}

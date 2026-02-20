@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  width: 100%; // <-- ocupa toda la celda del grid
+  // max-width: 400px;  
+}
+
+.card-image {
+  border-radius: var(--border-radius-4);
+}
+
+
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card__configure {
+  width: 100%;           
+  justify-content: center; 
+}
+
+.price--discount {
+  color: var(--color-red);
+}

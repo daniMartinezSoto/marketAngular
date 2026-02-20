@@ -1,0 +1,16 @@
+@import 'breakpoints';
+@import 'colors';
+@import 'fonts';
+@import 'spacings';
+@import 'zindexs';
+@import 'borders';
+@import 'sizings';
+
+:root {
+    @include colors;
+    @include fonts;
+    @include spacings;
+    @include zindexs;
+    @include borders;
+    @include sizings;
+}

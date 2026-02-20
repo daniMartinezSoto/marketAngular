@@ -1,0 +1,11 @@
+
+@mixin spacings {
+    --spacing-4:  #{pxToRem(4px)};
+    --spacing-8:  #{pxToRem(8px)};
+    --spacing-12: #{pxToRem(12px)};
+    --spacing-16: #{pxToRem(16px)};
+    --spacing-24: #{pxToRem(24px)};
+    --spacing-32: #{pxToRem(32px)};
+    --spacing-40: #{pxToRem(40px)};
+    --spacing-64: #{pxToRem(64px)};
+}

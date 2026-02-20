@@ -1,0 +1,33 @@
+.icon {
+    --icon-size-16: #{pxToRem(16px)};
+    --icon-size-24: #{pxToRem(24px)};
+
+    --icon-size: var(--icon-size-24); 
+    --icon-color: var(--color-black);
+
+    background-color: var(--icon-color);
+    height: var(--icon-size);
+    width: var(--icon-size);
+    min-width: var(--icon-size);
+    display: inline-block;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    vertical-align: middle;
+}
+
+$icons: 
+    moto-logo,
+    user,
+    burguer-menu,
+    discount,
+    shopBag,
+    market
+;
+
+@each $icon in $icons {
+  .icon--#{$icon} {
+    mask-image: url('/icons/#{$icon}.svg');
+    -webkit-mask-image: url('/icons/#{$icon}.svg');
+  }
+}
