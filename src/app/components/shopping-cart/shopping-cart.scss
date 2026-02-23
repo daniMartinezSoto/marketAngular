@@ -1,0 +1,48 @@
+@import '../../../styles/02-tools';
+
+
+.cesta {
+  display: flex;
+  gap: var(--spacing-64);
+  align-items: flex-start;
+}
+
+.cesta__resumen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  min-width: pxToRem(380px);
+  background-color: var(--color-low-grey);
+  padding: var(--spacing-24);
+  border-radius: var(--border-radius-4);
+  border: var(--border-width-1) solid var(--color-black);
+}
+.cesta__resumen .input,
+.cesta__resumen .button {
+  width: 100%;
+}
+
+.cesta__lista {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-24);
+  flex: 1;
+}
+
+.cesta__item {
+  display: flex;
+  gap: var(--spacing-24);
+  align-items: center;
+}
+
+.cesta__imagen {
+  width: pxToRem(150px);
+  min-width: pxToRem(150px);
+}
+
+.cesta__item-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-8);
+  flex: 1;
+}

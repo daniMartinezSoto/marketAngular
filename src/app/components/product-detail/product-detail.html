@@ -1,5 +1,12 @@
 <a routerLink="/" class="link">← Volver a todos los productos</a>
 
+
+@if (mostrarToast()) {
+  <div class="toast">Producto añadido a la cesta</div>
+}
+
+
+
 @if (producto(); as p) {
           <h1 class="title-h1">{{ p.name }}</h1>
   <div class="product-detail">

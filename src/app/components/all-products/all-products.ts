@@ -1,8 +1,8 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product, ProductoService } from '../../services/products-service';
-import { CestaService } from '../../services/shopping-cart-service';
 import { CurrencyPipe } from '@angular/common';
+import { ShoppinCartService } from '../../services/shopping-cart-service';
 
 @Component({
   selector: 'app-all-products',
@@ -17,7 +17,7 @@ export class AllProducts {
   mostrarToast = signal(false);
 
   private productoService = inject(ProductoService);
-  private cestaService = inject(CestaService);
+  private cestaService = inject(ShoppinCartService);
 
 
   cesta = signal<Product[]>([]);

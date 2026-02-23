@@ -2,7 +2,7 @@ import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Product, ProductoService } from '../../services/products-service';
-import { CestaService } from '../../services/shopping-cart-service';
+import { ShoppinCartService } from '../../services/shopping-cart-service';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,11 +12,11 @@ import { CestaService } from '../../services/shopping-cart-service';
 })
 export class ProductDetail {
 
-
+mostrarToast = signal(false);
 
   private route = inject(ActivatedRoute);
   private productoService = inject(ProductoService);
-  private cestaService = inject(CestaService);
+  private cestaService = inject(ShoppinCartService);
 
   producto = signal<Product | null>(null);
 
@@ -35,6 +35,8 @@ export class ProductDetail {
   agregarACesta() {
     const p = this.producto();
     if (p) this.cestaService.agregarProducto(p);
+        this.mostrarToast.set(true);
+    setTimeout(() => this.mostrarToast.set(false), 2000);
   }
 
 

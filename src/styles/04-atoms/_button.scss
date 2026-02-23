@@ -23,4 +23,9 @@
     background-color: var(--color-transparent);
     color: var(--color-black); 
   }
+
+    &--delete {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  }
 }

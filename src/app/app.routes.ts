@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { ProductDetail } from './components/product-detail/product-detail';
 import { AllProducts } from './components/all-products/all-products';
-import { ShoppingCart } from './components/shopping-cart/cesta-user';
+import { ShoppingCart } from './components/shopping-cart/shopping-cart';
 
 
 

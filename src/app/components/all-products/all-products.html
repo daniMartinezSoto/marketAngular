@@ -3,6 +3,16 @@
 @if (mostrarToast()) {
   <div class="toast">Producto añadido a la cesta</div>
 }
+
+  <h1 class="title-h1">Todos los productos</h1>
+
+<div class="chip-list"> 
+  <span class="chip">Verduras</span>
+  <span class="chip">Frutas</span>
+  <span class="chip">Zumos</span>
+</div>
+
+<h2 class="title-h2">{{ productos().length }} resultados de productos</h2>
   
   <ul class="cards">
     @for (producto of productos(); track $index) {
