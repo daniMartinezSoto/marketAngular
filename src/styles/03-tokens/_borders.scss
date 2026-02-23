@@ -1,4 +1,7 @@
 @mixin borders {
+
+    --border-radius-8: #{pxToRem(8px)};
+
     --border-radius-4: #{pxToRem(4px)};
     
     --border-width-1: #{pxToRem(1px)};

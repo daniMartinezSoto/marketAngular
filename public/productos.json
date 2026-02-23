@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Pera",
+    "price": 1.5,
+    "description": "Pera fresca y jugosa",
+     "image": "/img/pera.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Espárrago",
+    "price": 2.0,
+    "description": "Espárragos verdes de calidad",
+    "image": "/img/esparrago.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Cebolla",
+    "price": 0.8,
+    "description": "Cebolla tierna ideal para cocinar",
+    "image": "/img/cebolla.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Limón",
+    "price": 0.5,
+    "description": "Limón ácido y fresco",
+    "image": "img/limon.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Plátano",
+    "price": 1.2,
+    "description": "Plátano dulce y cremoso",
+    "image": "/img/platano.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Zumo de Naranja",
+    "price": 2.5,
+    "description": "Zumo recién exprimido",
+    "image": "/img/zumo_naranja.jpg"
+  }
+]

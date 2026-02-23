@@ -4,12 +4,15 @@
   </div>
 
   <div class="header__right">
+    
+    <a [routerLink]="'/'">
     <button class="button button--filled">Ver todos los productos</button>
-
-    <a href="#" class="header__user">
-      <span class="icon icon--shopBag"></span>
-      Cesta ()
     </a>
+
+<a [routerLink]="'/cesta'" class="header__user">
+  <span class="icon icon--shopBag"></span>
+  Cesta ()
+</a>
 
     <button class="icon icon--burguer-menu" aria-label="Menú"></button>
   </div>

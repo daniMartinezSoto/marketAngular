@@ -4,12 +4,18 @@
   justify-content: center;
   gap: var(--spacing-12);
   height: var(--input-and-btn-height);
+  cursor: pointer;
   padding: var(--spacing-12);
   border-radius: var(--border-radius-4);
   font: var(--font-body);
 
   &--filled {
     background-color: var(--color-black);
+    color: var(--color-white);
+  }
+
+   &--filledGrid {
+    background-color: var(--color-market);
     color: var(--color-white);
   }
 

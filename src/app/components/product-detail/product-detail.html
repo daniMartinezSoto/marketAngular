@@ -1,0 +1,18 @@
+<a routerLink="/" class="link">← Volver a todos los productos</a>
+
+@if (producto(); as p) {
+          <h1 class="title-h1">{{ p.name }}</h1>
+  <div class="product-detail">
+    
+    <img class="card-image product-detail__image" [src]="p.image" [alt]="p.name">
+    
+    <div class="product-detail__info">
+
+      <button class="button button--filledGrid" (click)="agregarACesta()">
+        Añadir a la cesta
+      </button>
+      <p>{{ p.description }}</p>
+      <span class="price">{{ p.price | currency:'EUR' }} (con IVA)</span>
+    </div>
+  </div>
+}
