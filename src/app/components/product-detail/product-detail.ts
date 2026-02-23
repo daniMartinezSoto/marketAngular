@@ -1,8 +1,8 @@
 import { CurrencyPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
-import { Producto, ProductoService } from '../../services/producto-service';
-import { CestaService } from '../../services/cesta-service';
+import { Product, ProductoService } from '../../services/products-service';
+import { CestaService } from '../../services/shopping-cart-service';
 
 @Component({
   selector: 'app-product-detail',
@@ -18,7 +18,7 @@ export class ProductDetail {
   private productoService = inject(ProductoService);
   private cestaService = inject(CestaService);
 
-  producto = signal<Producto | null>(null);
+  producto = signal<Product | null>(null);
 
 
 

@@ -5,6 +5,8 @@
 @import 'styles/05-molecules';
 
 
+
+
 main {
   padding: var(--spacing-64) var(--spacing-32);
 }
@@ -12,10 +14,6 @@ main {
 // header
 
 
-.header__icon {
-  width: pxToRem(150px);
-  height: pxToRem(70px);
-}
 
 //titulos
 

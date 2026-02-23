@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { CestaService } from '../../services/cesta-service';
+import { CestaService } from '../../services/shopping-cart-service';
 
 
 @Component({
-  selector: 'app-cesta.user',
+  selector: 'app-shopping-cart',
   imports: [],
-  templateUrl: './cesta.user.html',
+  templateUrl: './shopping-cart.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CestaUser {
+export class ShoppingCart {
 
   cestaService = inject(CestaService);
 

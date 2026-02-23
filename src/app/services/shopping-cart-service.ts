@@ -1,12 +1,12 @@
 import { Injectable, signal, effect } from '@angular/core';
-import { Producto } from './producto-service';
+import { Product } from './products-service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CestaService {
 
-  cesta = signal<Producto[]>(this.cargarCesta());
+  cesta = signal<Product[]>(this.cargarCesta());
 
   constructor() {
     effect(() => {
@@ -14,12 +14,11 @@ export class CestaService {
     });
   }
 
-  private cargarCesta(): Producto[] {
-    const cesta = localStorage.getItem('cesta');
-    return cesta ? JSON.parse(cesta) : [];
+  private cargarCesta(): Product[] {
+      return JSON.parse(localStorage.getItem('cesta') || '[]');
   }
 
-  agregarProducto(producto: Producto) {
+  agregarProducto(producto: Product) {
     this.cesta.update(lista => [...lista, producto]);
   }
 

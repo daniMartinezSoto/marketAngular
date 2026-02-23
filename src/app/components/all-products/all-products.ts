@@ -1,16 +1,18 @@
-import { CurrencyPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
-import { Producto, ProductoService } from '../../services/producto-service';
-import { CestaService } from '../../services/cesta-service';
+import { Component, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Product, ProductoService } from '../../services/products-service';
+import { CestaService } from '../../services/shopping-cart-service';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-grid-products',
-  imports: [CurrencyPipe, RouterLink],
-  templateUrl: './grid-products.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  selector: 'app-all-products',
+  imports: [RouterLink, CurrencyPipe],
+  templateUrl: './all-products.html',
+  styleUrl: './all-products.scss',
 })
-export class GridProducts {
+export class AllProducts {
+
+
 
   mostrarToast = signal(false);
 
@@ -18,8 +20,8 @@ export class GridProducts {
   private cestaService = inject(CestaService);
 
 
-  cesta = signal<Producto[]>([]);
-  productos = signal<Producto[]>([]);
+  cesta = signal<Product[]>([]);
+  productos = signal<Product[]>([]);
 
   constructor() {
     effect(() => {
@@ -32,10 +34,14 @@ export class GridProducts {
     console.log('Cesta actualizada:', this.cesta());
   }
 
-  agregarACesta(producto: Producto) {
+  agregarACesta(producto: Product) {
     console.log('producto añadido', producto);
     this.cestaService.agregarProducto(producto);
     this.mostrarToast.set(true);
     setTimeout(() => this.mostrarToast.set(false), 2000);
   }
+
+
+
+
 }
