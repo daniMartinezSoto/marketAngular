@@ -8,11 +8,12 @@ import { ShoppinCartService } from '../../services/shopping-cart-service';
   selector: 'app-product-detail',
   imports: [RouterLink, CurrencyPipe],
   templateUrl: './product-detail.html',
+    styleUrl: './product-detail.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetail {
 
-mostrarToast = signal(false);
+showNotification = signal(false);
 
   private route = inject(ActivatedRoute);
   private productoService = inject(ProductoService);
@@ -32,11 +33,11 @@ mostrarToast = signal(false);
   }
 
 
-  agregarACesta() {
+  addToCart() {
     const p = this.producto();
-    if (p) this.cestaService.agregarProducto(p);
-        this.mostrarToast.set(true);
-    setTimeout(() => this.mostrarToast.set(false), 2000);
+    if (p) this.cestaService.addProduct(p);
+        this.showNotification.set(true);
+    setTimeout(() => this.showNotification.set(false), 2000);
   }
 
 

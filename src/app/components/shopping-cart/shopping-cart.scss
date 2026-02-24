@@ -1,22 +1,34 @@
 @import '../../../styles/02-tools';
-
+@import '../../../styles/03-tokens';
 
 .cesta {
   display: flex;
-  gap: var(--spacing-64);
+  flex-direction: column;
+  gap: var(--spacing-32);
   align-items: flex-start;
+
+  @include breakpoint($break-992) {
+    flex-direction: row;
+    gap: var(--spacing-64);
+  }
 }
 
 .cesta__resumen {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-16);
-  min-width: pxToRem(380px);
+  width: 100%;
   background-color: var(--color-low-grey);
   padding: var(--spacing-24);
   border-radius: var(--border-radius-4);
   border: var(--border-width-1) solid var(--color-black);
+
+  @include breakpoint($break-992) {
+    min-width: pxToRem(380px);
+    width: auto;
+  }
 }
+
 .cesta__resumen .input,
 .cesta__resumen .button {
   width: 100%;
@@ -27,17 +39,27 @@
   flex-direction: column;
   gap: var(--spacing-24);
   flex: 1;
+  width: 100%;
 }
 
 .cesta__item {
   display: flex;
-  gap: var(--spacing-24);
+  gap: var(--spacing-16);
   align-items: center;
+
+  @include breakpoint($break-768) {
+    gap: var(--spacing-40);
+  }
 }
 
 .cesta__imagen {
-  width: pxToRem(150px);
-  min-width: pxToRem(150px);
+  width: pxToRem(100px);
+  min-width: pxToRem(100px);
+
+  @include breakpoint($break-768) {
+    width: pxToRem(150px);
+    min-width: pxToRem(150px);
+  }
 }
 
 .cesta__item-info {

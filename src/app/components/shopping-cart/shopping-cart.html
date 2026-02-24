@@ -28,7 +28,7 @@
         <h3 class="title-h3">{{ producto.name }}</h3>
         <span class="price">{{ producto.price | currency:'EUR' }} (con IVA)</span>
       </div>
-<button class="button button--delete" (click)="eliminarDeCesta(producto)">
+<button class="button button--delete" (click)="deleteProduct(producto)">
   Eliminar de la cesta
 </button>
     </li>

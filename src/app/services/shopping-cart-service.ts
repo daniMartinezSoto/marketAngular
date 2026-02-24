@@ -6,7 +6,7 @@ import { Product } from './products-service';
 })
 export class ShoppinCartService {
 
-  cesta = signal<Product[]>(this.cargarCesta());
+  cesta = signal<Product[]>(this.loadCart());
 
   constructor() {
     effect(() => {
@@ -14,18 +14,19 @@ export class ShoppinCartService {
     });
   }
 
-  private cargarCesta(): Product[] {
-      return JSON.parse(localStorage.getItem('cesta') || '[]');
+  private loadCart(): Product[] {
+    return JSON.parse(localStorage.getItem('cesta') || '[]');
   }
 
-  agregarProducto(producto: Product) {
+  addProduct(producto: Product) {
     this.cesta.update(lista => [...lista, producto]);
   }
 
-eliminarProducto(producto: Product) {
-  this.cesta.update(lista => {
-    const index = lista.findIndex(p => p.id === producto.id);
-    return lista.filter((_, i) => i !== index);
-  });
-}
+
+  deleteProduct(producto: Product) {
+    this.cesta.update(lista => {
+      const index = lista.findIndex(p => p.id === producto.id);
+      return lista.filter((_, i) => i !== index);
+    });
+  }
 }

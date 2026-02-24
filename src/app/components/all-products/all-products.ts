@@ -14,7 +14,7 @@ export class AllProducts {
 
 
 
-  mostrarToast = signal(false);
+  showNotification = signal(false);
 
   private productoService = inject(ProductoService);
   private cestaService = inject(ShoppinCartService);
@@ -34,11 +34,11 @@ export class AllProducts {
     console.log('Cesta actualizada:', this.cesta());
   }
 
-  agregarACesta(producto: Product) {
+  addToCart(producto: Product) {
     console.log('producto añadido', producto);
-    this.cestaService.agregarProducto(producto);
-    this.mostrarToast.set(true);
-    setTimeout(() => this.mostrarToast.set(false), 2000);
+    this.cestaService.addProduct(producto);
+    this.showNotification.set(true);
+    setTimeout(() => this.showNotification.set(false), 2000);
   }
 
 

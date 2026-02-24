@@ -1,37 +1,37 @@
-<section class="all-motos">
-  
-@if (mostrarToast()) {
+<section class="">
+
+  @if (showNotification()) {
   <div class="toast">Producto añadido a la cesta</div>
-}
+  }
 
   <h1 class="title-h1">Todos los productos</h1>
 
-<div class="chip-list"> 
-  <span class="chip">Verduras</span>
-  <span class="chip">Frutas</span>
-  <span class="chip">Zumos</span>
-</div>
+  <div class="chip-list">
+    <span class="chip">Verduras</span>
+    <span class="chip">Frutas</span>
+    <span class="chip">Zumos</span>
+  </div>
 
-<h2 class="title-h2">{{ productos().length }} resultados de productos</h2>
-  
+  <h2 class="title-h2">{{ productos().length }} resultados de productos</h2>
+
   <ul class="cards">
     @for (producto of productos(); track $index) {
-      <li class="card">
-        <a [routerLink]="['/producto', producto.id]">
-          <img class="card-image" [src]="producto.image" alt="{{producto.name}}">
-        </a>
+    <li class="card">
+      <a [routerLink]="['/producto', producto.id]">
+        <img class="card-image" [src]="producto.image" alt="{{producto.name}}">
+      </a>
 
-        <h3 class="title-h3">{{producto.name}}</h3>
+      <h3 class="title-h3">{{producto.name}}</h3>
 
-        <div class="card-footer">
-          <span class="price">{{ producto.price | currency:'EUR' }} (con IVA)</span>
-          <a [routerLink]="['/producto', producto.id]" class="link">Ver más</a>
-        </div>
+      <div class="card-footer">
+        <span class="price">{{ producto.price | currency:'EUR' }} (con IVA)</span>
+        <a [routerLink]="['/producto', producto.id]" class="link">Ver más</a>
+      </div>
 
-        <button class="button button--filledGrid card__configure" (click)="agregarACesta(producto)">
-          Añadir a la cesta
-        </button>
-      </li>
+      <button class="button button--filledGrid card__configure" (click)="addToCart(producto)">
+        Añadir a la cesta
+      </button>
+    </li>
     }
   </ul>
 </section>

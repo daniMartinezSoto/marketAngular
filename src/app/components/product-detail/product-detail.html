@@ -1,7 +1,7 @@
 <a routerLink="/" class="link">← Volver a todos los productos</a>
 
 
-@if (mostrarToast()) {
+@if (showNotification()) {
   <div class="toast">Producto añadido a la cesta</div>
 }
 
@@ -15,7 +15,7 @@
     
     <div class="product-detail__info">
 
-      <button class="button button--filledGrid" (click)="agregarACesta()">
+      <button class="button button--filledGrid" (click)="addToCart()">
         Añadir a la cesta
       </button>
       <p>{{ p.description }}</p>

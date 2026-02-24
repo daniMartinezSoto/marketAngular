@@ -11,9 +11,6 @@ main {
   padding: var(--spacing-64) var(--spacing-32);
 }
 
-// header
-
-
 
 //titulos
 
@@ -82,10 +79,18 @@ main {
 
 //card grid
 
-.cards{
+.cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(pxToRem(300px), 1fr));
+  grid-template-columns: 1fr;
   gap: var(--spacing-24);
+
+  @include breakpoint($break-768) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint($break-992) {
+    grid-template-columns: repeat(auto-fit, minmax(pxToRem(300px), 1fr));
+  }
 }
 
 
@@ -101,19 +106,3 @@ main {
 }
 
 
-.product-detail {
-  display: flex;
-  gap: var(--spacing-32);
-  align-items: flex-start;
-
-  &__image {
-    width: pxToRem(300px);
-    min-width: pxToRem(300px);
-  }
-
-  &__info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-16);
-  }
-}
