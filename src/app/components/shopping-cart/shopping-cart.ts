@@ -14,14 +14,14 @@ import { RouterLink } from '@angular/router';
 })
 export class ShoppingCart {
 
-cestaService = inject(ShoppinCartService);
+cartSertvice = inject(ShoppinCartService);
 
   precioTotal = computed(() =>
-    this.cestaService.cesta().reduce((total, p) => total + p.price, 0)
+    this.cartSertvice.cesta().reduce((total, p) => total + p.price, 0)
   );
 
   deleteProduct(producto: any) {
-    this.cestaService.deleteProduct(producto);
+    this.cartSertvice.deleteProduct(producto);
   }
 
 }

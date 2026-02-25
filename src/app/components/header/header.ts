@@ -11,8 +11,8 @@ import { ShoppinCartService } from '../../services/shopping-cart-service';
 export class Header {
 
 
-  private cestaService = inject(ShoppinCartService);
+  private cartService = inject(ShoppinCartService);
 
 
-  totalCesta = computed(() => this.cestaService.cesta().length);
+  totalCesta = computed(() => this.cartService.cesta().length);
 }

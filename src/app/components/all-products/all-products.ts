@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Product, ProductoService } from '../../services/products-service';
 import { CurrencyPipe } from '@angular/common';
@@ -15,9 +15,10 @@ export class AllProducts {
 
 
   showNotification = signal(false);
+  filtro = signal<string | null>(null);
 
   private productoService = inject(ProductoService);
-  private cestaService = inject(ShoppinCartService);
+  private shoppingCartService = inject(ShoppinCartService);
 
 
   cesta = signal<Product[]>([]);
@@ -36,12 +37,21 @@ export class AllProducts {
 
   addToCart(producto: Product) {
     console.log('producto añadido', producto);
-    this.cestaService.addProduct(producto);
+    this.shoppingCartService.addProduct(producto);
     this.showNotification.set(true);
     setTimeout(() => this.showNotification.set(false), 2000);
   }
 
 
 
+productosFiltrados = computed(() => {
+  const f = this.filtro();
+  if (!f) return this.productos();
+  return this.productos().filter(p => p.type === f);
+});
+
+seleccionarFiltro(tipo: string) {
+  this.filtro.set(this.filtro() === tipo ? null : tipo);
+}
 
 }

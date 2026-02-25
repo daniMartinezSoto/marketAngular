@@ -6,16 +6,25 @@
 
   <h1 class="title-h1">Todos los productos</h1>
 
-  <div class="chip-list">
-    <span class="chip">Verduras</span>
-    <span class="chip">Frutas</span>
-    <span class="chip">Zumos</span>
-  </div>
+<div class="chip-list">
+  <span class="chip"
+    [class.chip--filled]="filtro() === null"
+    (click)="seleccionarFiltro('')">Todos</span>
+  <span class="chip" 
+    [class.chip--filled]="filtro() === 'fruta'"
+    (click)="seleccionarFiltro('fruta')">Frutas</span>
+  <span class="chip"
+    [class.chip--filled]="filtro() === 'verdura'"
+    (click)="seleccionarFiltro('verdura')">Verduras</span>
+  <span class="chip"
+    [class.chip--filled]="filtro() === 'zumo'"
+    (click)="seleccionarFiltro('zumo')">Zumos</span>
+</div>
 
-  <h2 class="title-h2">{{ productos().length }} resultados de productos</h2>
-
+<h2 class="title-h2">{{ productosFiltrados().length }} resultados</h2>
+  
   <ul class="cards">
-    @for (producto of productos(); track $index) {
+  @for (producto of productosFiltrados(); track $index) {
     <li class="card">
       <a [routerLink]="['/producto', producto.id]">
         <img class="card-image" [src]="producto.image" alt="{{producto.name}}">
