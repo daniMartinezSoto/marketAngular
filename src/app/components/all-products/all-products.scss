@@ -1,0 +1,48 @@
+@import '../../../styles/06-shared';
+
+app-product-detail-input {
+  display: block;
+  margin-top: var(--spacing-64);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-24);
+
+  @include breakpoint($break-768) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include breakpoint($break-992) {
+    grid-template-columns: repeat(auto-fill, minmax(pxToRem(300px), 1fr));
+  }
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal {
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-4);
+  padding: var(--spacing-32);
+  max-width: pxToRem(800px);
+  width: 90%;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal__close {
+  position: absolute;
+  top: var(--spacing-16);
+  right: var(--spacing-16);
+  cursor: pointer;
+}

@@ -1,0 +1,14 @@
+@if (showNotification()) {
+  <div class="toast">Producto añadido a la cesta</div>
+}
+
+<div class="product-detail">
+  <img class="card-image product-detail__image" [src]="producto().image" [alt]="producto().name" />
+
+  <div class="product-detail__info">
+    <h1 class="title-h1">{{ producto().name }}</h1>
+    <button class="button button--filled" (click)="addToCart()">Añadir a la cesta</button>
+    <p>{{ producto().description }}</p>
+    <span class="price">{{ producto().price | currency: 'EUR' }} (con IVA)</span>
+  </div>
+</div>

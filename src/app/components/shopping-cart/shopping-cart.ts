@@ -2,26 +2,35 @@ import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/c
 import { ShoppinCartService } from '../../services/shopping-cart-service';
 import { CurrencyPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-shopping-cart',
-  imports: [CurrencyPipe, RouterLink],
+  imports: [CurrencyPipe, RouterLink, ReactiveFormsModule],
   templateUrl: './shopping-cart.html',
-  styleUrls: ['./shopping-cart.scss'], 
+  styleUrls: ['./shopping-cart.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  
 })
 export class ShoppingCart {
+  shoppingCartService = inject(ShoppinCartService);
+  private fb = inject(FormBuilder);
 
-cartSertvice = inject(ShoppinCartService);
+  form = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+  });
 
-  precioTotal = computed(() =>
-    this.cartSertvice.cesta().reduce((total, p) => total + p.price, 0)
-  );
-
-  deleteProduct(producto: any) {
-    this.cartSertvice.deleteProduct(producto);
+  onSubmit() {
+    this.form.markAllAsTouched();
+    if (this.form.invalid) return;
+    console.log('COMPRA REALIZADA - Email:', this.form.value.email);
+    this.shoppingCartService.clearCart();
   }
 
+  precioTotal = computed(() =>
+    this.shoppingCartService.ShoppingCart().reduce((total, p) => total + p.price, 0),
+  );
+
+  deleteProduct(productToDelete: any) {
+    this.shoppingCartService.deleteProduct(productToDelete);
+  }
 }

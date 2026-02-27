@@ -1,12 +1,11 @@
-@import '../../../styles/02-tools';
-@import '../../../styles/03-tokens';
+@import '../../../styles/06-shared';
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: var(--spacing-16); 
+  padding: var(--spacing-16);
 
   background-color: var(--color-low-grey);
   z-index: var(--zindex-header);
@@ -19,7 +18,6 @@
   align-items: center;
   gap: var(--spacing-12);
 }
-
 
 .header__icon {
   width: pxToRem(150px);

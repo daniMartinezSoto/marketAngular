@@ -1,18 +1,17 @@
 <header class="header">
   <div class="header__left">
-     <a href="#" class="icon icon--market header__icon" aria-label="Logo"></a>
+    <a href="#" class="icon icon--market header__icon" aria-label="Logo"></a>
   </div>
 
   <div class="header__right">
-    
     <a [routerLink]="'/'">
-    <button class="button button--filled header__btn">Ver todos los productos</button>
+      <button class="button button--filled header__btn">Ver todos los productos</button>
     </a>
 
-<a [routerLink]="'/cesta'" class="header__user">
-  <span class="icon icon--shopBag"></span>
-  Cesta ({{ totalCesta() }})
-</a>
+    <a [routerLink]="'/cesta'" class="header__user">
+      <span class="icon icon--shopBag"></span>
+      Cesta ({{ productsQuantity() }})
+    </a>
 
     <button class="icon icon--burguer-menu" aria-label="Menú"></button>
   </div>

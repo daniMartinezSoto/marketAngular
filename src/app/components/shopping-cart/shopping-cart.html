@@ -1,38 +1,47 @@
-<a routerLink="/" class="link">← Volver a todos los productos</a>
+<a routerLink="/" class="link">← Back to all products</a>
 
-  <h1 class="title-h1">Cesta de la compra</h1>
+<h1 class="title-h1">Shopping cart</h1>
 
-<h1 class="title-h2">{{ cestaService.cesta().length }} productos seleccionados</h1>
+<h2 class="title-h2">{{ shoppingCartService.ShoppingCart().length }} selected products</h2>
 
-<div class="cesta">
+<div class="cart">
+  <div class="cart__summary">
+    <p>{{ shoppingCartService.ShoppingCart().length }} selected products</p>
+    <p class="title-h3">Total price {{ precioTotal() | currency: 'EUR' }} (VAT included)</p>
 
-  <div class="cesta__resumen">
-    <div class="cesta__info">
+    <form class="input-label" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <label for="cart-email">Email</label>
+      <input
+        class="input"
+        type="email"
+        id="cart-email"
+        placeholder="Your email"
+        formControlName="email"
+      />
 
-    </div>
-    <p class="">{{ cestaService.cesta().length }} productos seleccionados</p>
-    <p class="title-h3">Precio total {{ precioTotal() | currency:'EUR' }} (con IVA)</p>
+      @if (form.get('email')?.touched && form.get('email')?.hasError('required')) {
+        <p>Email is required</p>
+      }
+      @if (form.get('email')?.touched && form.get('email')?.hasError('email')) {
+        <p>Invalid email format</p>
+      }
 
-    <form class="input-label">
-      <label for="cesta-email">Email</label>
-      <input class="input" type="email" id="cesta-email" placeholder="Tu email" required>
-      <button type="submit" class="button button--filled">Comprar</button>
+      <button type="submit" class="button button--filled">Checkout</button>
     </form>
   </div>
 
-  <ul class="cesta__lista">
-    @for (producto of cestaService.cesta(); track producto.id) {
-    <li class="cesta__item">
-      <img class="card-image cesta__imagen" [src]="producto.image" [alt]="producto.name">
-      <div class="cesta__item-info">
-        <h3 class="title-h3">{{ producto.name }}</h3>
-        <span class="price">{{ producto.price | currency:'EUR' }} (con IVA)</span>
-      </div>
-<button class="button button--delete" (click)="deleteProduct(producto)">
-  Eliminar de la cesta
-</button>
-    </li>
+  <ul class="cart__list">
+    @for (product of shoppingCartService.ShoppingCart(); track product.id) {
+      <li class="cart__item">
+        <img class="card-image cart__image" [src]="product.image" [alt]="product.name" />
+        <div class="cart__item-info">
+          <h3 class="title-h3">{{ product.name }}</h3>
+          <span class="price">{{ product.price | currency: 'EUR' }} (VAT included)</span>
+        </div>
+        <button class="button button--delete" (click)="deleteProduct(product)">
+          Remove from cart
+        </button>
+      </li>
     }
   </ul>
-
 </div>

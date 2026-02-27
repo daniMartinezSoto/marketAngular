@@ -11,21 +11,15 @@ export interface Product {
   type: string;
 }
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ProductoService {
+export class ProductService {
+  private url = '/productos.json';
 
+  constructor(private http: HttpClient) {}
 
- private url = '/productos.json'; 
-
-
-  constructor(private http: HttpClient) { }
-
-  getProductos(): Observable<Product[]> {
+  getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.url);
   }
-
-  
 }

@@ -1,0 +1,10 @@
+.toast {
+  position: fixed;
+  bottom: var(--spacing-32);
+  right: var(--spacing-32);
+  background-color: var(--color-market);
+  color: var(--color-white);
+  padding: var(--spacing-12) var(--spacing-24);
+  border-radius: var(--border-radius-4);
+  font: var(--font-body);
+}

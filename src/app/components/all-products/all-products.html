@@ -1,46 +1,53 @@
 <section class="">
-
   @if (showNotification()) {
-  <div class="toast">Producto añadido a la cesta</div>
+    <div class="toast">Producto añadido a la cesta</div>
   }
 
   <h1 class="title-h1">Todos los productos</h1>
 
-<div class="chip-list">
-  <span class="chip"
-    [class.chip--filled]="filtro() === null"
-    (click)="seleccionarFiltro('')">Todos</span>
-  <span class="chip" 
-    [class.chip--filled]="filtro() === 'fruta'"
-    (click)="seleccionarFiltro('fruta')">Frutas</span>
-  <span class="chip"
-    [class.chip--filled]="filtro() === 'verdura'"
-    (click)="seleccionarFiltro('verdura')">Verduras</span>
-  <span class="chip"
-    [class.chip--filled]="filtro() === 'zumo'"
-    (click)="seleccionarFiltro('zumo')">Zumos</span>
-</div>
+  <div class="chip-list">
+    <button class="chip" [class.chip--filled]="filter() === null" (click)="selectFilter(null)">
+      Todos
+    </button>
 
-<h2 class="title-h2">{{ productosFiltrados().length }} resultados</h2>
-  
-  <ul class="cards">
-  @for (producto of productosFiltrados(); track $index) {
-    <li class="card">
-      <a [routerLink]="['/producto', producto.id]">
-        <img class="card-image" [src]="producto.image" alt="{{producto.name}}">
-      </a>
-
-      <h3 class="title-h3">{{producto.name}}</h3>
-
-      <div class="card-footer">
-        <span class="price">{{ producto.price | currency:'EUR' }} (con IVA)</span>
-        <a [routerLink]="['/producto', producto.id]" class="link">Ver más</a>
-      </div>
-
-      <button class="button button--filledGrid card__configure" (click)="addToCart(producto)">
-        Añadir a la cesta
+    @for (tipo of productTypes(); track $index) {
+      <button class="chip" [class.chip--filled]="filter() === tipo" (click)="selectFilter(tipo)">
+        {{ tipo | titlecase }}
       </button>
-    </li>
+    }
+  </div>
+
+  <h2 class="title-h2">{{ filtProducts().length }} resultados</h2>
+
+  <ul class="cards">
+    @for (producto of filtProducts(); track $index) {
+      <li class="card">
+        <a [routerLink]="['/producto', producto.id]">
+          <img class="card-image" [src]="producto.image" alt="{{ producto.name }}" />
+        </a>
+
+        <h3 class="title-h3">{{ producto.name }}</h3>
+
+        <div class="card-footer">
+          <span class="price">{{ producto.price | currency: 'EUR' }} (con IVA)</span>
+          <a class="link" href="#" (click)="$event.preventDefault(); seleccionarProducto(producto)"
+            >Ver más</a
+          >
+        </div>
+
+        <button class="button button--filledGrid card__configure" (click)="addToCart(producto)">
+          Añadir a la cesta
+        </button>
+      </li>
     }
   </ul>
+
+  @if (productoSeleccionado()) {
+    <div class="modal-overlay" (click)="cerrarModal()">
+      <div class="modal" (click)="$event.stopPropagation()">
+        <button class="modal__close button button--transparent" (click)="cerrarModal()">✕</button>
+        <app-product-detail-input [producto]="productoSeleccionado()!" />
+      </div>
+    </div>
+  }
 </section>

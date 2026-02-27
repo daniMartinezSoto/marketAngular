@@ -1,57 +1,61 @@
 import { Component, computed, effect, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Product, ProductoService } from '../../services/products-service';
-import { CurrencyPipe } from '@angular/common';
+import { Product, ProductService } from '../../services/products-service';
+import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { ShoppinCartService } from '../../services/shopping-cart-service';
+import { ProductDetailInput } from '../product-detail-input/product-detail-input';
 
 @Component({
   selector: 'app-all-products',
-  imports: [RouterLink, CurrencyPipe],
+  imports: [RouterLink, CurrencyPipe, TitleCasePipe, ProductDetailInput],
   templateUrl: './all-products.html',
   styleUrl: './all-products.scss',
 })
 export class AllProducts {
-
-
+  productTypes = computed(() => {
+    const listTypes = this.products().map((p) => p.type);
+    return [...new Set(listTypes)];
+  });
 
   showNotification = signal(false);
-  filtro = signal<string | null>(null);
+  filter = signal<string | null>(null);
 
-  private productoService = inject(ProductoService);
+  private productoService = inject(ProductService);
   private shoppingCartService = inject(ShoppinCartService);
 
-
-  cesta = signal<Product[]>([]);
-  productos = signal<Product[]>([]);
+  cart = signal<Product[]>([]);
+  products = signal<Product[]>([]);
+  productoSeleccionado = signal<Product | null>(null);
 
   constructor() {
     effect(() => {
-      this.productoService.getProductos().subscribe(data => {
-        this.productos.set(data);
-
-
+      this.productoService.getProducts().subscribe((data) => {
+        this.products.set(data);
       });
     });
-    console.log('Cesta actualizada:', this.cesta());
   }
 
   addToCart(producto: Product) {
-    console.log('producto añadido', producto);
     this.shoppingCartService.addProduct(producto);
     this.showNotification.set(true);
     setTimeout(() => this.showNotification.set(false), 2000);
   }
 
+  filtProducts = computed(() => {
+    const f = this.filter();
+    if (!f) return this.products();
+    return this.products().filter((p) => p.type === f);
+  });
 
+  selectFilter(tipo: string | null) {
+    this.filter.set(this.filter() === tipo ? null : tipo);
+  }
 
-productosFiltrados = computed(() => {
-  const f = this.filtro();
-  if (!f) return this.productos();
-  return this.productos().filter(p => p.type === f);
-});
+  seleccionarProducto(producto: Product) {
+    this.productoSeleccionado.set(producto);
+  }
 
-seleccionarFiltro(tipo: string) {
-  this.filtro.set(this.filtro() === tipo ? null : tipo);
-}
-
+  cerrarModal() {
+    this.productoSeleccionado.set(null);
+  }
 }
